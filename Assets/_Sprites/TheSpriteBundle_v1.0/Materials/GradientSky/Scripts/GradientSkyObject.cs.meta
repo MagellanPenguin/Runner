@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: b15c0d5af41115d4384c50ac1de14ff1
+timeCreated: 1516407407
+licenseType: Store
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 181078
+  packageName: The Sprite Bundle
+  packageVersion: 1.0
+  assetPath: Assets/TheSpriteBundle_v1.0/Materials/GradientSky/Scripts/GradientSkyObject.cs
+  uploadId: 396751

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 04ede0abc1e28a148a7a91cc95adf385
+timeCreated: 1516207931
+licenseType: Store
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 181078
+  packageName: The Sprite Bundle
+  packageVersion: 1.0
+  assetPath: Assets/TheSpriteBundle_v1.0/Materials/GradientSky/Shaders/VertexColorCamera.shader
+  uploadId: 396751
