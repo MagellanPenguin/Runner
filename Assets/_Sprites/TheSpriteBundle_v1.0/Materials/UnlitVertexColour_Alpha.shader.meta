@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 125f31ba4cdefb2469a075f509877b02
+timeCreated: 1461197347
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 181078
+  packageName: The Sprite Bundle
+  packageVersion: 1.0
+  assetPath: Assets/TheSpriteBundle_v1.0/Materials/UnlitVertexColour_Alpha.shader
+  uploadId: 396751
