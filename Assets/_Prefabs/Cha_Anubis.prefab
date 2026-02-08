@@ -488,12 +488,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 12
   slideDuration: 0.6
-  maxHP: 10
-  currentHP: 0
   rb: {fileID: 6701848996608172255}
   bodyCollider: {fileID: 9126667480088874983}
   headCollider: {fileID: 4624289354524513924}
   footCollider: {fileID: 5053305923383859665}
+  animator: {fileID: 0}
+  health: {fileID: 0}
 --- !u!1 &1205863251412828962
 GameObject:
   m_ObjectHideFlags: 0
