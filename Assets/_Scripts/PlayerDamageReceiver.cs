@@ -1,13 +1,21 @@
 using UnityEngine;
 
+/// <summary>
+/// í”Œë ˆì´ì–´ê°€ ì¶©ëŒí–ˆì„ ë•Œ
+/// - Ground ë ˆì´ì–´ë©´ ë¬´ì‹œ
+/// - Wall ë ˆì´ì–´ë©´ ë°ë¯¸ì§€ ì ìš©
+/// </summary>
 public class PlayerDamageReceiver : MonoBehaviour
 {
     [Header("Refs")]
     public PlayerHealth health;
 
-    [Header("Damage Filter")]
-    public string groundTag = "Ground";
-    public LayerMask damageLayers; // Obstacle ·¹ÀÌ¾î¸¸ Ã¼Å© ÃßÃµ
+    [Header("Layer Filters")]
+    [Tooltip("ë°ë¯¸ì§€ë¥¼ ë°›ì§€ ì•ŠëŠ” ë ˆì´ì–´ (Ground)")]
+    public LayerMask groundLayer;
+
+    [Tooltip("ë°ë¯¸ì§€ë¥¼ ë°›ëŠ” ë ˆì´ì–´ (Wall)")]
+    public LayerMask wallLayer;
 
     [Header("Damage")]
     public int defaultDamage = 1;
@@ -15,37 +23,46 @@ public class PlayerDamageReceiver : MonoBehaviour
     void Reset()
     {
         health = GetComponent<PlayerHealth>();
-        // Inspector¿¡¼­ Obstacle ·¹ÀÌ¾î¸¸ Ã¼Å©ÇØµÎ¸é µÊ
     }
 
-    bool IsDamageTarget(Collider2D other)
+    bool IsInLayerMask(int layer, LayerMask mask)
     {
-        // 1) Ground ÅÂ±×¸é Àı´ë µ¥¹ÌÁö X
-        if (other.CompareTag(groundTag)) return false;
-
-        // 2) ·¹ÀÌ¾î°¡ damageLayers¿¡ Æ÷ÇÔµÇ¸é µ¥¹ÌÁö O
-        int otherLayerMask = 1 << other.gameObject.layer;
-        return (damageLayers.value & otherLayerMask) != 0;
+        return (mask.value & (1 << layer)) != 0;
     }
 
-    void ApplyDamageFrom(Collider2D other)
+    bool ShouldTakeDamage(Collider2D other)
+    {
+        int otherLayer = other.gameObject.layer;
+
+        // 1) Groundë©´ ì ˆëŒ€ ë°ë¯¸ì§€ X
+        if (IsInLayerMask(otherLayer, groundLayer))
+            return false;
+
+        // 2) Wallì´ë©´ ë°ë¯¸ì§€ O
+        if (IsInLayerMask(otherLayer, wallLayer))
+            return true;
+
+        // 3) ê·¸ ì™¸ ë ˆì´ì–´ëŠ” ë¬´ì‹œ
+        return false;
+    }
+
+    void ApplyDamage(Collider2D other)
     {
         if (!health || health.IsDead) return;
-        if (!IsDamageTarget(other)) return;
+        if (!ShouldTakeDamage(other)) return;
 
-        // Àå¾Ö¹° ÂÊ¿¡¼­ µ¥¹ÌÁö °ªÀ» ÁÖ°í ½ÍÀ¸¸é ObstacleDamageSource·Î È®Àå °¡´É
         health.TakeDamage(defaultDamage);
     }
 
-    // ¸öÅë Ãæµ¹(Non-trigger)
+    // ëª¸í†µ ì¶©ëŒ
     void OnCollisionEnter2D(Collision2D col)
     {
-        ApplyDamageFrom(col.collider);
+        ApplyDamage(col.collider);
     }
 
-    // ¸Ó¸®/¹ß Trigger Ãæµ¹ µî
+    // ë¨¸ë¦¬ / ë°œ Trigger ì¶©ëŒ
     void OnTriggerEnter2D(Collider2D other)
     {
-        ApplyDamageFrom(other);
+        ApplyDamage(other);
     }
 }

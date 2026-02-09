@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class HpBarUI : MonoBehaviour
 {
     [Header("UI")]
-    public Image hpFill;          // Filled Image
-    public Image flameFill;       // (¼±ÅÃ) ºÒ²É ¿À¹ö·¹ÀÌµµ Filled·Î ¸¸µé¸é °°ÀÌ ÁÙ¾îµê
+    public Image hpFill;          
+    public Image flameFill;       
     public float flameBoost = 0.03f;
 
     [Header("Target")]
@@ -13,7 +13,7 @@ public class HpBarUI : MonoBehaviour
 
     void Awake()
     {
-        if (!hpFill) Debug.LogWarning("hpFillÀÌ ºñ¾îÀÖÀ½");
+        if (!hpFill) Debug.LogWarning("hpFill í™•ì¸ë˜ì§€ì•ŠìŒ");
     }
 
     void OnEnable()

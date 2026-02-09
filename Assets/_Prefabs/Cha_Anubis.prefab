@@ -362,6 +362,8 @@ GameObject:
   - component: {fileID: 6701848996608172255}
   - component: {fileID: 3239867967504513561}
   - component: {fileID: -4433235096078502595}
+  - component: {fileID: -195669063834234189}
+  - component: {fileID: 3545724869238140638}
   m_Layer: 0
   m_Name: Cha_Anubis
   m_TagString: Untagged
@@ -432,7 +434,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -443,7 +445,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &3239867967504513561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,8 +494,48 @@ MonoBehaviour:
   bodyCollider: {fileID: 9126667480088874983}
   headCollider: {fileID: 4624289354524513924}
   footCollider: {fileID: 5053305923383859665}
-  animator: {fileID: 0}
-  health: {fileID: 0}
+  health: {fileID: -195669063834234189}
+  animator: {fileID: 6830766989468210028}
+  trigMove: Move
+  trigJump: Jump
+  trigSliding: Sliding
+  trigHit: Hit
+  trigDie: Die
+--- !u!114 &-195669063834234189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062373298116734705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c14317522be046548b01aa42305c4e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 7
+  currentHP: 0
+  invincibleTime: 0.6
+--- !u!114 &3545724869238140638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062373298116734705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37a4d7033e62c8b42a177e2b67acc722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: -195669063834234189}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  defaultDamage: 1
 --- !u!1 &1205863251412828962
 GameObject:
   m_ObjectHideFlags: 0
