@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        // 자동 달리기 시작 애니(원한다면)
+        // 자동 달리기 시작 애니
         FireMoveTriggerOnce();
     }
 
